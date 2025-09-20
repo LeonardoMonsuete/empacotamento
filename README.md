@@ -68,6 +68,69 @@ $ npm install -g @nestjs/mau
 $ mau deploy
 ```
 
+---
+
+## Executando com Docker
+
+A maneira mais fácil de executar a aplicação e suas dependências (como o banco de dados PostgreSQL) é utilizando o **Docker Compose**.
+
+### Pré-requisitos
+
+Certifique-se de que o **Docker** e o **Docker Compose** estão instalados e em execução na sua máquina.
+
+- [**Docker**](https://docs.docker.com/get-docker/): Plataforma para empacotar e rodar aplicações em contêineres.
+- [**Docker Compose**](https://docs.docker.com/compose/install/): Ferramenta para gerenciar aplicações com múltiplos contêineres.
+
+---
+
+### Passo a Passo
+
+1.  **Construa as imagens:**
+    Abra o terminal na raiz do projeto e execute o comando abaixo. Isso irá construir as imagens Docker conforme definido no seu arquivo `docker-compose.yml`.
+
+    ```bash
+    docker-compose build
+    ```
+
+2.  **Inicie a aplicação:**
+    Após a construção, inicie todos os serviços com o seguinte comando. A flag `-d` executa os contêineres em segundo plano (modo _detached_), liberando seu terminal.
+
+    ```bash
+    docker-compose up -d
+    ```
+
+3.  **Verifique o status:**
+    Para confirmar que todos os contêineres estão rodando corretamente, você pode usar:
+
+    ```bash
+    docker-compose ps
+    ```
+
+4.  **Acesse a aplicação:**
+    Sua aplicação NestJS e o banco de dados estarão em execução. A aplicação estará acessível em `http://localhost:3000` (ou na porta que você configurou).
+
+---
+
+### Comandos Úteis
+
+- **Para parar os serviços:**
+
+  ```bash
+  docker-compose down
+  ```
+
+- **Para ver os logs em tempo real:**
+
+  ```bash
+  docker-compose logs -f
+  ```
+
+- **Para reconstruir as imagens e reiniciar os contêineres (útil após alterar o código ou o Dockerfile):**
+
+  ```bash
+  docker-compose up --build
+  ```
+
 With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
 ## Resources
